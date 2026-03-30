@@ -1,31 +1,31 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import { Clock, ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { Clock, ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 function getWeekDays() {
-  const today = new Date()
-  const days = []
-  
+  const today = new Date();
+  const days = [];
+
   for (let i = 0; i < 7; i++) {
-    const date = new Date(today)
-    date.setDate(today.getDate() - today.getDay() + 1 + i) // Começa na segunda
-    
-    const dayNames = ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SÁB"]
-    const dayIndex = date.getDay()
-    
+    const date = new Date(today);
+    date.setDate(today.getDate() - today.getDay() + 1 + i); // Começa na segunda
+
+    const dayNames = ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SÁB"];
+    const dayIndex = date.getDay();
+
     days.push({
       short: dayNames[dayIndex],
       dayOfMonth: date.getDate(),
       date: date,
       isToday: date.toDateString() === today.toDateString(),
-    })
+    });
   }
-  
-  return days
+
+  return days;
 }
 
 const programacao = [
@@ -33,76 +33,84 @@ const programacao = [
     time: "06:00",
     title: "Despertar Cultural",
     description: "Matinal com notícias do mundo das artes",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&h=225&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&h=225&fit=crop",
     duration: "2h",
   },
   {
     time: "08:00",
     title: "Documentário: Grandes Mestres",
     description: "A vida e obra de Leonardo da Vinci",
-    image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=400&h=225&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=400&h=225&fit=crop",
     duration: "1h30",
   },
   {
     time: "10:00",
     title: "Arte Brasileira",
     description: "Explorando a riqueza artística nacional",
-    image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=400&h=225&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=400&h=225&fit=crop",
     duration: "1h",
   },
   {
     time: "12:00",
     title: "Cinema Clássico",
     description: "Fellini: La Dolce Vita",
-    image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&h=225&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&h=225&fit=crop",
     duration: "2h30",
   },
   {
     time: "15:00",
     title: "Música & Arte",
     description: "Jazz e suas influências na arte moderna",
-    image: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?w=400&h=225&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1511192336575-5a79af67a629?w=400&h=225&fit=crop",
     duration: "1h",
   },
   {
     time: "18:00",
     title: "Arquitetura pelo Mundo",
     description: "As maravilhas da arquitetura gótica",
-    image: "https://images.unsplash.com/photo-1431576901776-e539bd916ba2?w=400&h=225&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1431576901776-e539bd916ba2?w=400&h=225&fit=crop",
     duration: "1h",
   },
   {
     time: "20:00",
     title: "Ópera em Alta Definição",
     description: "La Traviata - Metropolitan Opera",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=225&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=225&fit=crop",
     duration: "3h",
   },
   {
     time: "23:00",
     title: "Cinema de Arte",
     description: "O filme premiado da semana",
-    image: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&h=225&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&h=225&fit=crop",
     duration: "2h",
   },
-]
+];
 
 export function Programacao() {
-  const [weekDays, setWeekDays] = useState<ReturnType<typeof getWeekDays>>([])
-  const [selectedDay, setSelectedDay] = useState(0)
+  const [weekDays, setWeekDays] = useState<ReturnType<typeof getWeekDays>>([]);
+  const [selectedDay, setSelectedDay] = useState(0);
 
   useEffect(() => {
-    const days = getWeekDays()
-    setWeekDays(days)
-    const todayIndex = days.findIndex(d => d.isToday)
+    const days = getWeekDays();
+    setWeekDays(days);
+    const todayIndex = days.findIndex((d) => d.isToday);
     if (todayIndex >= 0) {
-      setSelectedDay(todayIndex)
+      setSelectedDay(todayIndex);
     }
-  }, [])
+  }, []);
 
   return (
-    <section 
-      id="programacao" 
+    <section
+      id="programacao"
       className="relative bg-neutral-50 py-20 sm:py-28 overflow-hidden"
     >
       {/* Background Decoration */}
@@ -122,7 +130,8 @@ export function Programacao() {
             Programação
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-neutral-600 leading-relaxed">
-            Confira a grade completa do Canal Arte 1 e não perca nenhum programa.
+            Confira a grade completa do Canal Arte 1 e não perca nenhum
+            programa.
           </p>
         </div>
 
@@ -136,7 +145,7 @@ export function Programacao() {
           >
             <ChevronLeft className="h-5 w-5" />
           </Button>
-          
+
           <div className="flex gap-2 overflow-x-auto py-2 sm:gap-2">
             {weekDays.map((day, index) => (
               <button
@@ -147,22 +156,30 @@ export function Programacao() {
                   selectedDay === index
                     ? "bg-[#B01E23] text-white shadow-lg shadow-[#B01E23]/30 scale-105"
                     : day.isToday
-                    ? "bg-neutral-200 text-neutral-900 hover:bg-neutral-300"
-                    : "bg-white text-neutral-600 hover:bg-neutral-100 shadow-sm"
+                      ? "bg-neutral-200 text-neutral-900 hover:bg-neutral-300"
+                      : "bg-white text-neutral-600 hover:bg-neutral-100 shadow-sm",
                 )}
               >
-                <span className="text-[10px] font-bold uppercase tracking-wide sm:text-xs">{day.short}</span>
-                <span className={cn(
-                  "text-base font-bold sm:text-lg",
-                  selectedDay === index ? "text-white" : "text-neutral-900"
-                )}>
+                <span className="text-[10px] font-bold uppercase tracking-wide sm:text-xs">
+                  {day.short}
+                </span>
+                <span
+                  className={cn(
+                    "text-base font-bold sm:text-lg",
+                    selectedDay === index ? "text-white" : "text-neutral-900",
+                  )}
+                >
                   {day.dayOfMonth}
                 </span>
                 {day.isToday && (
-                  <span className={cn(
-                    "mt-0.5 text-[9px] font-medium uppercase tracking-wider",
-                    selectedDay === index ? "text-white/80" : "text-neutral-500"
-                  )}>
+                  <span
+                    className={cn(
+                      "mt-0.5 text-[9px] font-medium uppercase tracking-wider",
+                      selectedDay === index
+                        ? "text-white/80"
+                        : "text-neutral-500",
+                    )}
+                  >
                     Hoje
                   </span>
                 )}
@@ -187,7 +204,7 @@ export function Programacao() {
               key={index}
               className={cn(
                 "scroll-fade-up group relative overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-2",
-                `scroll-delay-${Math.min((index + 3) * 100, 800)}`
+                `scroll-delay-${Math.min((index + 3) * 100, 800)}`,
               )}
             >
               {/* Image Container */}
@@ -196,6 +213,7 @@ export function Programacao() {
                   src={programa.image}
                   alt={programa.title}
                   fill
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                   className="object-cover transition-all duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -231,5 +249,5 @@ export function Programacao() {
         </div>
       </div>
     </section>
-  )
+  );
 }

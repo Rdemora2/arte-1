@@ -1,45 +1,46 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const navItems = [
   { label: "Início", href: "#inicio" },
   { label: "Programação", href: "#programacao" },
   { label: "Onde Assistir", href: "#onde-assistir" },
   { label: "Canais Newco", href: "#canais-newco" },
-]
+];
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 8);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header 
+    <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
-        isScrolled 
-          ? "bg-neutral-900/95 backdrop-blur-md shadow-lg shadow-black/10" 
-          : "bg-transparent"
+        isScrolled || isMenuOpen
+          ? "border-b border-white/10 bg-neutral-950/82 backdrop-blur-xl shadow-xl shadow-black/25"
+          : "bg-transparent",
       )}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between md:h-24">
           {/* Logo */}
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="group flex-shrink-0 transition-transform duration-300 hover:scale-105"
           >
             <Image
@@ -75,16 +76,20 @@ export function Header() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
           >
-            <span className={cn(
-              "absolute inset-0 flex items-center justify-center transition-all duration-300",
-              isMenuOpen ? "rotate-90 opacity-0" : "rotate-0 opacity-100"
-            )}>
+            <span
+              className={cn(
+                "absolute inset-0 flex items-center justify-center transition-all duration-300",
+                isMenuOpen ? "rotate-90 opacity-0" : "rotate-0 opacity-100",
+              )}
+            >
               <Menu className="h-5 w-5" />
             </span>
-            <span className={cn(
-              "absolute inset-0 flex items-center justify-center transition-all duration-300",
-              isMenuOpen ? "rotate-0 opacity-100" : "-rotate-90 opacity-0"
-            )}>
+            <span
+              className={cn(
+                "absolute inset-0 flex items-center justify-center transition-all duration-300",
+                isMenuOpen ? "rotate-0 opacity-100" : "-rotate-90 opacity-0",
+              )}
+            >
               <X className="h-5 w-5" />
             </span>
           </Button>
@@ -92,10 +97,10 @@ export function Header() {
       </div>
 
       {/* Mobile Navigation */}
-      <div 
+      <div
         className={cn(
           "overflow-hidden transition-all duration-500 ease-out md:hidden",
-          isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
         )}
       >
         <nav className="border-t border-white/10 bg-neutral-900/95 backdrop-blur-md">
@@ -106,9 +111,13 @@ export function Header() {
                 href={item.href}
                 className={cn(
                   "block rounded-lg px-4 py-3 text-base font-medium text-white/90 transition-all duration-300 hover:bg-white/10 hover:text-white hover:translate-x-2",
-                  isMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"
+                  isMenuOpen
+                    ? "translate-x-0 opacity-100"
+                    : "-translate-x-4 opacity-0",
                 )}
-                style={{ transitionDelay: isMenuOpen ? `${index * 75}ms` : "0ms" }}
+                style={{
+                  transitionDelay: isMenuOpen ? `${index * 75}ms` : "0ms",
+                }}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
@@ -118,5 +127,5 @@ export function Header() {
         </nav>
       </div>
     </header>
-  )
+  );
 }
