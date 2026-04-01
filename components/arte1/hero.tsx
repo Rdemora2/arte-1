@@ -114,10 +114,13 @@ export function Hero() {
 
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-20 h-96 w-96 rounded-full bg-[#B01E23]/10 blur-3xl animate-pulse" />
+        <div 
+          className="absolute top-1/4 -left-20 h-96 w-96 rounded-full bg-[#B01E23]/10 blur-3xl animate-pulse" 
+          style={{ animationDuration: "8s" }} 
+        />
         <div
           className="absolute bottom-1/4 -right-20 h-80 w-80 rounded-full bg-[#B01E23]/5 blur-3xl animate-pulse"
-          style={{ animationDelay: "2s" }}
+          style={{ animationDuration: "12s", animationDelay: "2s" }}
         />
       </div>
 
@@ -128,21 +131,21 @@ export function Hero() {
             {/* Category Badge */}
             <span
               className={cn(
-                "mb-6 inline-flex items-center gap-2 rounded-full bg-[#B01E23] px-4 py-1.5 text-sm font-semibold text-white transition-all duration-700",
-                "shadow-lg shadow-[#B01E23]/30",
+                "mb-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-[#d4232c] to-[#a0181e] border border-white/20 px-4 py-1.5 text-[11px] sm:text-xs font-bold tracking-[0.2em] text-white uppercase transition-all duration-1000 ease-out",
+                "shadow-[0_8px_20px_-6px_rgba(176,30,35,0.5)]",
                 currentSlide >= 0
                   ? "translate-y-0 opacity-100"
                   : "translate-y-4 opacity-0",
               )}
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
+              <span className="h-1.5 w-1.5 rounded-full bg-white opacity-90 shadow-[0_0_8px_white]" />
               {featuredContent[currentSlide].category}
             </span>
 
             {/* Title */}
             <h1
               key={`title-${currentSlide}`}
-              className="mb-6 text-4xl font-bold leading-[0.92] text-white sm:text-5xl sm:leading-[0.93] lg:text-7xl lg:leading-[0.9] text-balance animate-fade-in-up"
+              className="mb-6 text-[40px] font-extrabold tracking-tighter leading-[0.95] text-white sm:text-6xl sm:leading-[0.93] lg:text-[88px] lg:leading-[0.9] text-balance drop-shadow-2xl animate-fade-in-up"
             >
               {featuredContent[currentSlide].title}
             </h1>
@@ -160,7 +163,7 @@ export function Hero() {
               featuredContent[currentSlide].ctaLabel && (
                 <Link
                   href={featuredContent[currentSlide].ctaHref}
-                  className="mt-8 inline-flex items-center rounded-md bg-[#B01E23] px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition-colors duration-300 hover:bg-[#8d171c]"
+                  className="mt-8 inline-flex items-center rounded-full bg-gradient-to-b from-[#d4232c] to-[#a0181e] px-8 py-3.5 text-[13px] font-bold uppercase tracking-[0.2em] text-white shadow-[0_15px_30px_-10px_rgba(176,30,35,0.5)] border border-white/15 transition-all duration-500 ease-out hover:scale-[0.98] hover:shadow-[0_5px_15px_-5px_rgba(176,30,35,0.7)]"
                 >
                   {featuredContent[currentSlide].ctaLabel}
                 </Link>
@@ -170,24 +173,24 @@ export function Hero() {
       </div>
 
       {/* Navigation Arrows */}
-      <div className="absolute top-1/2 left-4 right-4 z-20 -translate-y-1/2 flex justify-between pointer-events-none sm:left-6 sm:right-6">
+      <div className="absolute top-1/2 left-4 right-4 z-20 -translate-y-1/2 hidden sm:flex justify-between pointer-events-none sm:left-6 sm:right-6">
         <Button
           variant="ghost"
           size="icon"
           onClick={prevSlide}
-          className="group h-10 w-10 rounded-full bg-black/20 text-white backdrop-blur-sm transition-all duration-300 hover:bg-black/40 hover:scale-110 pointer-events-auto sm:h-12 sm:w-12"
+          className="group h-12 w-12 rounded-full bg-white/10 border border-white/20 text-white backdrop-blur-xl transition-all duration-500 ease-out hover:bg-white/20 hover:scale-[1.05] pointer-events-auto sm:h-14 sm:w-14 shadow-xl"
           aria-label="Slide anterior"
         >
-          <ChevronLeft className="h-5 w-5 transition-transform duration-300 group-hover:-translate-x-0.5 sm:h-6 sm:w-6" />
+          <ChevronLeft className="h-5 w-5 transition-transform duration-500 ease-out group-hover:-translate-x-0.5 sm:h-6 sm:w-6" strokeWidth={1.5} />
         </Button>
         <Button
           variant="ghost"
           size="icon"
           onClick={nextSlide}
-          className="group h-10 w-10 rounded-full bg-black/20 text-white backdrop-blur-sm transition-all duration-300 hover:bg-black/40 hover:scale-110 pointer-events-auto sm:h-12 sm:w-12"
+          className="group h-12 w-12 rounded-full bg-white/10 border border-white/20 text-white backdrop-blur-xl transition-all duration-500 ease-out hover:bg-white/20 hover:scale-[1.05] pointer-events-auto sm:h-14 sm:w-14 shadow-xl"
           aria-label="Próximo slide"
         >
-          <ChevronRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 sm:h-6 sm:w-6" />
+          <ChevronRight className="h-5 w-5 transition-transform duration-500 ease-out group-hover:translate-x-0.5 sm:h-6 sm:w-6" strokeWidth={1.5} />
         </Button>
       </div>
 

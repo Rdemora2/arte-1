@@ -146,18 +146,18 @@ export function Programacao() {
             <ChevronLeft className="h-5 w-5" />
           </Button>
 
-          <div className="flex gap-2 overflow-x-auto py-2 sm:gap-2">
+          <div className="flex gap-2 sm:gap-3 overflow-x-auto overflow-y-hidden py-4 px-2 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {weekDays.map((day, index) => (
               <button
                 key={`${day.short}-${day.dayOfMonth}`}
                 onClick={() => setSelectedDay(index)}
                 className={cn(
-                  "group relative flex min-w-[60px] flex-col items-center rounded-xl px-3 py-2 text-center transition-all duration-300 sm:min-w-[70px] sm:px-4 sm:py-3",
+                  "group relative flex shrink-0 min-w-[64px] flex-col items-center rounded-2xl px-3 py-2 text-center transition-all duration-500 ease-out sm:min-w-[76px] sm:px-4 sm:py-3 snap-center",
                   selectedDay === index
-                    ? "bg-[#B01E23] text-white shadow-lg shadow-[#B01E23]/30 scale-105"
+                    ? "bg-gradient-to-b from-neutral-800 to-neutral-950 text-white shadow-[0_12px_30px_-10px_rgba(0,0,0,0.4)] scale-[1.02]"
                     : day.isToday
                       ? "bg-neutral-200 text-neutral-900 hover:bg-neutral-300"
-                      : "bg-white text-neutral-600 hover:bg-neutral-100 shadow-sm",
+                      : "bg-white text-neutral-600 hover:bg-neutral-100 shadow-sm border border-black/5",
                 )}
               >
                 <span className="text-[10px] font-bold uppercase tracking-wide sm:text-xs">
@@ -203,7 +203,7 @@ export function Programacao() {
             <article
               key={index}
               className={cn(
-                "scroll-fade-up group relative overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-2",
+                "scroll-fade-up group relative overflow-hidden rounded-[1.5rem] bg-white shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] border border-black/5 transition-all duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] hover:-translate-y-1",
                 `scroll-delay-${Math.min((index + 3) * 100, 800)}`,
               )}
             >
@@ -243,7 +243,7 @@ export function Programacao() {
               </div>
 
               {/* Hover Border */}
-              <div className="absolute inset-0 rounded-2xl border-2 border-[#B01E23] opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
+              <div className="absolute inset-0 rounded-[1.5rem] ring-1 ring-inset ring-black/5 opacity-0 transition-opacity duration-700 group-hover:opacity-100 pointer-events-none" />
             </article>
           ))}
         </div>

@@ -8,10 +8,11 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { label: "Início", href: "#inicio" },
-  { label: "Programação", href: "#programacao" },
-  { label: "Onde Assistir", href: "#onde-assistir" },
-  { label: "Canais Newco", href: "#canais-newco" },
+  { label: "Início", href: "/#inicio" },
+  { label: "Programação", href: "/#programacao" },
+  { label: "Onde Assistir", href: "/#onde-assistir" },
+  { label: "Canais Newco", href: "/#canais-newco" },
+  { label: "Amostradas", href: "/materia/amostradas", isHighlight: true },
 ];
 
 export function Header() {
@@ -32,7 +33,7 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
         isScrolled || isMenuOpen
-          ? "bg-neutral-950/82 backdrop-blur-xl shadow-xl shadow-black/25"
+          ? "bg-neutral-950/95 backdrop-blur-xl"
           : "bg-transparent",
       )}
     >
@@ -49,6 +50,7 @@ export function Header() {
               width={160}
               height={64}
               className="h-16 w-auto md:h-20"
+              style={{ width: "auto" }}
               priority
             />
           </Link>
@@ -59,11 +61,17 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="group relative px-4 py-2 text-sm font-medium text-white/90 transition-colors duration-300 hover:text-white"
+                className={cn(
+                  "group relative px-4 py-2 text-sm font-medium transition-colors duration-300",
+                  item.isHighlight ? "text-white/90 hover:text-[#f14499]" : "text-white/90 hover:text-white"
+                )}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {item.label}
-                <span className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-[#B01E23] transition-all duration-300 ease-out group-hover:w-3/4" />
+                <span className={cn(
+                  "absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 transition-all duration-300 ease-out group-hover:w-3/4",
+                  item.isHighlight ? "bg-[#f14499]" : "bg-[#B01E23]"
+                )} />
               </Link>
             ))}
           </nav>
@@ -110,7 +118,8 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "block rounded-lg px-4 py-3 text-base font-medium text-white/90 transition-all duration-300 hover:bg-white/10 hover:text-white hover:translate-x-2",
+                  "block rounded-lg px-4 py-3 text-base font-medium transition-all duration-300 hover:bg-white/10 hover:translate-x-2",
+                  item.isHighlight ? "text-white/90 hover:text-[#f14499]" : "text-white/90 hover:text-white",
                   isMenuOpen
                     ? "translate-x-0 opacity-100"
                     : "-translate-x-4 opacity-0",

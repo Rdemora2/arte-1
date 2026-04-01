@@ -29,7 +29,7 @@ export default function HomePage() {
                 alt="Banner de publicidade Amostras"
                 width={2500}
                 height={834}
-                className="h-auto w-full rounded-sm shadow-2xl shadow-black/35 transition-transform duration-300 group-hover:scale-[1.01]"
+                className="h-auto w-full rounded-[1.5rem] md:rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] border border-white/10 transition-transform duration-500 ease-out group-hover:scale-[0.98]"
                 priority
                 sizes="(min-width: 1024px) 560px, (min-width: 768px) 78vw, 86vw"
               />

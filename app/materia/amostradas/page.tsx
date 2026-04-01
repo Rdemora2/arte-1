@@ -89,12 +89,13 @@ export default function MateriaAmostradasPage() {
               {/* Sticky Title Image (Left aligned, solid background)
                   Glued exactly to the navbar. The extra padding and negative margin (bleed) 
                   ensures scrolling text never slips between the header and this title block. */}
-              <div className="sticky top-20 md:top-24 z-40 bg-neutral-950 pb-4 mb-8 pt-8 -mt-8">
+              <div className="sticky top-20 md:top-24 z-40 bg-neutral-950 pb-2 mb-4 pt-4 -mt-4">
                 <div className="relative h-12 sm:h-16 md:h-20 w-full max-w-[240px] sm:max-w-xs md:max-w-sm">
                   <Image
                     src="/images/Amostradas/Medias/amostradas-invert.png"
                     alt="AMOSTRADAS"
                     fill
+                    sizes="(max-width: 640px) 240px, (max-width: 768px) 320px, 384px"
                     className="object-contain object-left"
                     priority
                   />
@@ -102,10 +103,13 @@ export default function MateriaAmostradasPage() {
               </div>
 
               {/* Text Body */}
-              <div className="prose prose-invert prose-lg md:prose-xl max-w-none mt-4">
-                <div className="space-y-8 lg:space-y-10">
-                  {introParagraphs.map((paragraph, index) => (
-                    <p key={paragraph.slice(0, 24)} className="text-lg sm:text-xl lg:text-[22px] leading-relaxed font-light text-white/85 tracking-wide">
+              <div className="prose prose-invert prose-lg md:prose-xl max-w-[75ch] mt-4">
+                <div className="space-y-8 lg:space-y-12">
+                  {introParagraphs.map((paragraph) => (
+                    <p 
+                      key={paragraph.slice(0, 24)} 
+                      className="text-lg sm:text-xl lg:text-[22px] font-light text-white/60 tracking-wide leading-[1.8]"
+                    >
                       {paragraph}
                     </p>
                   ))}
@@ -114,10 +118,10 @@ export default function MateriaAmostradasPage() {
 
               {/* Authors */}
               <div className="mt-16 flex items-center justify-start gap-6">
-                <p className="inline-flex items-center justify-center rounded-full border border-[#B01E23]/40 bg-[#B01E23]/10 px-8 py-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#f7c6c8] shadow-[0_0_15px_rgba(176,30,35,0.1)]">
+                <p className="inline-flex items-center justify-center rounded-full border border-[#f14499]/40 bg-[#f14499]/10 px-8 py-2.5 text-xs font-bold tracking-[0.2em] uppercase text-[#f14499] shadow-[0_0_15px_rgba(241,68,153,0.15)]">
                   {authors}
                 </p>
-                <div className="h-px flex-1 max-w-[100px] bg-gradient-to-r from-[#B01E23]/60 to-transparent" />
+                <div className="h-px flex-1 max-w-[100px] bg-gradient-to-r from-[#f14499]/60 to-transparent" />
               </div>
 
               <div className="my-20 h-px w-full bg-gradient-to-r from-white/15 to-transparent" />
@@ -137,7 +141,7 @@ export default function MateriaAmostradasPage() {
                       <div className="max-w-2xl px-2">
                         <h4 
                           id={`artist-${artist.name.replace(/\s+/g, '-').toLowerCase()}`}
-                          className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4 sm:mb-6 transition-colors duration-500 group-hover:text-[#f7c6c8]"
+                          className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4 sm:mb-6 transition-colors duration-500 group-hover:text-[#f14499]"
                         >
                           {artist.name}
                         </h4>
@@ -165,7 +169,7 @@ export default function MateriaAmostradasPage() {
                             {artist.images.map((img, idx) => (
                               <div 
                                 key={idx} 
-                                className="relative flex-none w-[85vw] sm:w-[70vw] md:w-[50vw] lg:w-[45vw] max-w-[700px] aspect-video snap-center rounded-xl md:rounded-2xl overflow-hidden bg-neutral-900 border border-white/5 shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+                                className="relative flex-none w-[85vw] sm:w-[70vw] md:w-[50vw] lg:w-[45vw] max-w-[700px] aspect-video snap-center snap-always rounded-xl md:rounded-2xl overflow-hidden bg-neutral-900 border border-white/5 shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
                                 role="group"
                                 aria-roledescription="slide"
                                 aria-label={`Obra ${idx + 1} de ${artist.images.length} por ${artist.name}`}
@@ -202,6 +206,7 @@ export default function MateriaAmostradasPage() {
                     src="/images/Amostradas/Medias/apoiadores_amostradas.png"
                     alt="Apoiadores da Exposição"
                     fill
+                    sizes="(min-width: 1024px) 360px, 100vw"
                     priority
                     className="object-contain object-center"
                   />
@@ -213,6 +218,7 @@ export default function MateriaAmostradasPage() {
                     src="/images/Amostradas/Medias/apoiadores_amostradas_mobile.png"
                     alt="Apoiadores da Exposição Mobile"
                     fill
+                    sizes="100vw"
                     priority
                     className="object-contain object-center"
                   />
