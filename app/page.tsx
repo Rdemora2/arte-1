@@ -25,7 +25,7 @@ export default function HomePage() {
               className="group block"
             >
               <Image
-                src="/images/banner_publicidade_caixa.png"
+                src="/images/Amostradas/Medias/banner_publicidade_Amostradas.png"
                 alt="Banner de publicidade Amostras"
                 width={2500}
                 height={834}

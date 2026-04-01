@@ -37,12 +37,12 @@ const featuredContent = [
   },
   {
     id: 4,
-    title: "amostradas",
-    description: "De 24 de março a 28 de junho.",
-    image: "/images/banner_publicidade_caixa.png",
+    title: "Amostradas",
+    description: "De 24 de março a 28 de junho. Em Belém do Pará",
+    image: "/images/Amostradas/Medias/banner_hero_Amostradas.png",
     category: "Especial",
     ctaLabel: "saber mais",
-    ctaHref: "/materia/amostras-rajadas",
+    ctaHref: "/materia/amostradas",
   },
 ];
 
