@@ -218,7 +218,7 @@ export default function MateriaAmostradasPage() {
                     src="/images/Amostradas/Medias/apoiadores_amostradas_mobile.png"
                     alt="Apoiadores da Exposição Mobile"
                     fill
-                    sizes="100vw"
+                    sizes="(max-width: 1024px) 95vw, 400px"
                     priority
                     className="object-contain object-center"
                   />
