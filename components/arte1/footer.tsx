@@ -78,9 +78,16 @@ export function Footer() {
                 href="https://valiantgroup.com.br/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-neutral-400 transition-colors duration-300 hover:text-white"
+                className="group relative inline-flex items-center justify-center font-bold transition-all duration-300"
               >
-                Valiant Group
+                {/* Text Gradient Transition */}
+                <span className="relative z-10 bg-gradient-to-r from-neutral-400 to-neutral-400 bg-clip-text text-transparent transition-all duration-500 group-hover:from-[#614ea2] group-hover:to-[#09a8a7] group-hover:drop-shadow-[0_0_8px_rgba(9,168,167,0.5)]">
+                  Valiant Group
+                </span>
+                {/* Expanding Underline */}
+                <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-gradient-to-r from-[#614ea2] to-[#09a8a7] transition-all duration-500 ease-out group-hover:w-full" />
+                {/* Diffused Background Glow */}
+                <span className="absolute -inset-2 z-0 scale-75 rounded-lg bg-gradient-to-r from-[#614ea2]/0 to-[#09a8a7]/0 blur-md transition-all duration-500 group-hover:scale-100 group-hover:from-[#614ea2]/15 group-hover:to-[#09a8a7]/15" />
               </a>
             </p>
           </div>
