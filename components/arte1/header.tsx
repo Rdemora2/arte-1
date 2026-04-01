@@ -63,7 +63,7 @@ export function Header() {
                 href={item.href}
                 className={cn(
                   "group relative px-4 py-2 text-sm font-medium transition-colors duration-300",
-                  item.isHighlight ? "text-white/90 hover:text-[#f14499]" : "text-white/90 hover:text-white"
+                  item.isHighlight ? "text-[#f14499]" : "text-white/90 hover:text-white"
                 )}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
@@ -119,7 +119,7 @@ export function Header() {
                 href={item.href}
                 className={cn(
                   "block rounded-lg px-4 py-3 text-base font-medium transition-all duration-300 hover:bg-white/10 hover:translate-x-2",
-                  item.isHighlight ? "text-white/90 hover:text-[#f14499]" : "text-white/90 hover:text-white",
+                  item.isHighlight ? "text-[#f14499]" : "text-white/90 hover:text-white",
                   isMenuOpen
                     ? "translate-x-0 opacity-100"
                     : "-translate-x-4 opacity-0",
