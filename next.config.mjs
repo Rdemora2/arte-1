@@ -3,9 +3,12 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
   images: {
     unoptimized: false,
-    qualities: [75, 80],
+    minimumCacheTTL: 2592000,
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
